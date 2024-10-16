@@ -43,6 +43,13 @@ int main() {
     //initialising all locations with 1 [not possible with below line]
     int fifth[10] = {1};
 
+    //to initialise it
+    int number[1000];
+    fill(number,number+1000,1);
+    for(int i=0;i<1000;i++){
+        cout<<number[i]<<endl;
+    }
+
     n = 10;
     //printArray(fifth, 10);
 
