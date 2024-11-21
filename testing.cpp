@@ -1,7 +1,8 @@
 #include<iostream>
 #include<math.h>
+#include<limits.h>
+#include<vector>
 using namespace std;
-
 
 //square of a number with bit manipulation 
 /*
@@ -24,5 +25,7 @@ int main(){
 */
 
 int main(){
-    
+    string st = "Hello World!";
+    st.back() = 'd';
+    cout<<st<<endl;
 }

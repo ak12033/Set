@@ -1,7 +1,31 @@
 #include <iostream>
 using namespace std;
 #include <limits.h>
-/*void printArray(int arr[], int size) {
+
+//                                 fill vs fill_n
+/*
+int main(){
+    int arr[10] = {0};
+    fill(arr+1,arr+6,-1);
+    for(int i=0; i<10; i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+*/
+/*
+int main(){
+    int arr[10] = {0};
+    fill_n(arr,6,-1);
+    for(int i=0; i<10; i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+*/
+
+/*
+void printArray(int arr[], int size) {
 
     cout<< " printing the array " << endl;
     //print the array
@@ -10,9 +34,10 @@ using namespace std;
     }
     cout<< " printing DONE " << endl;
 }
+*/
 
+/*
 int main() {
-
     //declare
     int number[15];
 
@@ -20,26 +45,34 @@ int main() {
     cout << "Value at 14 index " << number[14] << endl;
 
     //cout << "Value at 20 index " << number[20] << endl;
-
+    */
+    
+    /*
     //initialising an array 
     int second[3] = {5, 7, 11};
 
     //accesing an element
     cout << "Value at 2 index " << second[2] << endl;
+    */
 
+    /*
     int third[15] = {2,7};
 
     int n = 15;
     //printArray(third, 15);
     int thirdSize = sizeof(third)/sizeof(int);
     cout<<" Size of Third is " << thirdSize <<endl;
+    */
 
+    /*
     //initialising all locations with 0
     int fourth[10] = {0};
 
     n = 10;
     //printArray(fourth, 10);
+    */
 
+    /*
     //initialising all locations with 1 [not possible with below line]
     int fifth[10] = {1};
 
@@ -55,8 +88,9 @@ int main() {
 
     int fifthSize = sizeof(fifth)/sizeof(int);
     cout<<" Size of Fifth is " << fifthSize <<endl;
+    */
     
-
+    /*
     char ch[5] = {'a', 'b', 'c', 'r', 'p'}; 
     cout << ch[3] << endl;
 
@@ -74,10 +108,12 @@ int main() {
     cout << endl << " Everything is Fine " << endl << endl;
 
     return 0;
-}*/
+}
+*/
 
-//max and min of an array
-/*int getMin(int num[], int n) {
+//                                  Max and Min of an array
+/*
+int getMin(int num[], int n) {
 
     int mini = INT_MAX;
     
@@ -85,15 +121,14 @@ int main() {
         
         mini = min( mini, num[i]);
         
-        //if(num[i] < min){
-        //    min = num[i];
-        //}
+        // if(num[i] < min){
+        //     min = num[i];
+        // }
     }
 
-    //returning min value
+    // returning min value
     return mini;
 }
-
 int getMax(int num[], int n) {
 
     int maxi = INT_MIN;
@@ -102,12 +137,11 @@ int getMax(int num[], int n) {
 
         maxi = max(maxi, num[i]);
 
-       // if(num[i] > max){
-         //   max = num[i];
-       // }
+        // if(num[i] > max){
+        //     max = num[i];
+        // }
     }
-
-    //returning max value
+    // returning max value
     return maxi;
 }
 
@@ -128,10 +162,12 @@ int main() {
 
 
     return 0;
-}*/
+}
+*/
 
-//printing  the sum of elements in an array
-/*int sumArr(int arr[],int n){
+//                        Sum of all elements in an array
+/*
+int sumArr(int arr[],int n){
     int sum = 0;
     for(int i = 0; i<n; i++){
         sum+=arr[i];
@@ -148,10 +184,12 @@ int main() {
         cin>>a[i];
     }
     cout<<"The sum of all the elements in the array is: " << sumArr(a,n) << endl;
-}*/
+}
+*/
 
-//power of 2(leetcode)
-/*int main(){
+//                               Power of 2(leetcode)
+/*
+int main(){
     int n;
     cin>>n;
     int count=0;
@@ -167,22 +205,21 @@ int main() {
     else{
         cout<<"no"<<endl;
     }
-}*/
+}
+*/
 
 //linear search
-/*bool search(int arr[], int size, int key) {
+/*
+bool search(int arr[], int size, int key) {
 
-    for( int i = 0; i<size; i++ ) {
+    for(int i=0; i<size; i++) {
 
         if( arr[i] == key) {
             return 1;
         }
-
     }
     return 0;
 }
-
-
 int main() {
 
     int arr[10] = { 5, 7, -2, 10, 22, -2, 0, 5, 22, 1};
@@ -199,12 +236,12 @@ int main() {
     else{
         cout <<" Key is absent " << endl;
     }
-
-
     return 0;
-}*/
+}
+*/
 
 //reversing an array
+/*
 void reverse(int arr[], int n) {
 
     int start = 0;
@@ -216,7 +253,6 @@ void reverse(int arr[], int n) {
         end--;
     }
 }
-
 void printArray(int arr[], int n) {
     
     for(int i=0; i<n; i++) {
@@ -239,3 +275,4 @@ int main() {
 
     return 0;
 }
+*/

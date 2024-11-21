@@ -2,6 +2,12 @@
 #include <vector>
 using namespace std;
 
+//                                   Insertion Sort
+
+// Insertion Sort is stable because the algorithm only shifts 
+// elements that are greater than the current element being inserted. 
+
+/*
 void insertionSort(vector<int>& arr, int n){   
     for(int i=1; i<n; i++) {
         int j = i;
@@ -24,3 +30,4 @@ int main() {
     
     return 0;
 }
+*/
