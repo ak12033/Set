@@ -1,31 +1,42 @@
-#include<iostream>
-#include<math.h>
-#include<limits.h>
-#include<vector>
+#include <bits/stdc++.h>
 using namespace std;
 
-//square of a number with bit manipulation 
-/*
-int main(){
-    int n;
-    cin>>n;
-    n = abs(n);
-    int temp_n = n;
-    int pos = 0;
-    int res = 0;
-    while(temp_n != 0){
-        if(temp_n & 1){
-            res += n<<pos;
-        }
-        pos++;
-        temp_n = temp_n>>1;
-    }
-    cout << res <<endl;
-}
-*/
+int c=0;
+void merge(vector<int> &arr, int low, int mid, int high) {
 
-int main(){
-    string st = "Hello World!";
-    st.back() = 'd';
-    cout<<st<<endl;
+    // Temporary Array
+    vector<int> temp; 
+    
+    // Starting index of left half of arr
+    int left = low; 
+
+    // Starting index of right half of arr
+    int right = mid + 1;   
+
+    // Storing elements in the temporary array in a sorted manner
+    while (left <= mid && right <= high) {
+        if (arr[left] <= arr[right]) {
+            temp.push_back(arr[left]);
+            left++;
+        }
+        else {
+            temp.push_back(arr[right]);
+            c+=(mid-left+1);
+            right++;
+        }
+    }
+    // If elements on the left half are still left 
+    while (left <= mid) {
+        temp.push_back(arr[left]);
+        left++;
+    }
+    // If elements on the right half are still left 
+    while (right <= high) {
+        temp.push_back(arr[right]);
+        right++;
+    }
+    // Transfering all elements from temporary to arr 
+    for (int i = low; i <= high; i++) {
+        arr[i] = temp[i-low];
+    }
 }

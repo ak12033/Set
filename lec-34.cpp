@@ -1,23 +1,23 @@
 #include<iostream>
 using namespace std;
 
-/*void reverse(string& str, int i, int j ) {
+//                              Reverse the String
+/*
+void reverse(string& str, int i, int j ) {
 
-    cout << "call recieved for " << str << endl;
+    cout << "call received for " << str << endl;
 
-    //base case
-    if(i>j)
+    // Base Case
+    if(i>j){
         return ;
-
+    }
     swap(str[i], str[j]);
     i++;
     j--;
 
-    //Recursive call
+    // Recursive Call
     reverse(str,i,j);
-
 }
-
 int main() {
 
     string name = "abcde";
@@ -27,12 +27,12 @@ int main() {
     cout << name << endl;
 
     return 0;
-}*/
+}
+*/
+//                                        OR
+/*
+void reverse(string& str, int i){
 
-
-//                                                                OR
-
-/*void reverse(string& str, int i){
     if(i==str.length()){
         return;
     }
@@ -47,11 +47,11 @@ int main() {
     cout << endl;
 
     return 0;
-}*/
-
-//                                                                 OR
-
-/*int reverse(string& str, int i ) {
+}
+*/
+//                                          OR
+/*
+int reverse(string& str, int i ) {
 
     cout << "call recieved for " << str << endl;
 
@@ -63,10 +63,8 @@ int main() {
         swap(str[i], str[str.size()-1-i]);
         i++;
     return reverse(str,i);
-
     }
 }
-
 int main() {
 
     string str;
@@ -78,23 +76,25 @@ int main() {
     cout << str;
 
     return 0;
-}*/
+}
+*/
 
+//                                  Check Palindrome
+/*
+bool checkPalindrome(string str, int i, int  j) {
 
-/*bool checkPalindrome(string str, int i, int  j) {
-
-    //base case
-    if(i>j)
+    // Base Case
+    if(i>j){
         return true;
-
-    if(str[i] != str[j])
+    }
+    if(str[i] != str[j]){
         return false;
+    }
+    //Recursive Call
     else{
-        //Recursive call
         return checkPalindrome(str, i+1,j-1);
     }
 }
-
 int main() {
 
     string name = "BabbaB";
@@ -108,63 +108,63 @@ int main() {
     else {
         cout << "Its not a Palindrome " << endl;
     }
-
-
     return 0;
-}*/
+}
+*/
 
-/*int power(int a, int b) {
-    //base case
-    if( b == 0 )
+//                                  a raise to the power b
+/*
+int power(int a, int b) {
+
+    // Base Case
+    if( b == 0 ){
         return 1;
-
-    if(b == 1)
+    }
+    if(b == 1){
         return a;
-
-    //RECURSIVE CALL
+    }
+    // Recursive Call
     int ans = power(a, b/2);
 
-    //if b is even
+    // if b is even
     if(b%2 == 0) {
         return ans * ans;
     }
+    // if b is odd
     else {
-        //if b is odd
         return a * ans * ans;
     }
 }
-
 int main() {
 
     int a,b;
     cin >> a >> b;
     cout << endl;
-    int ans = power(a,b);
 
+    int ans = power(a,b);
     cout << "Answer is " << ans << endl;
 
     return 0;
-}*/
+}
+*/
 
-/*void sortArray(int *arr, int n) {
+//                                     Bubble Sort
+/*
+void sortArray(int *arr, int n) {
 
-    //base case - already sorted
+    // Base Case - already sorted
     if(n == 0 || n == 1) {
         return ;
     }
-
-    //1 case sovle karlia - largest element ko end me rakh dega
+    // 1 case sovle karlia - largest element ko end me rakh dega
     for(int i=0; i<n-1; i++) {
         if(arr[i] > arr[i+1]){
             swap(arr[i], arr[i+1]);
         }
     }
-
-    //Recursive Call
+    // Recursive Call
     sortArray(arr, n-1);
-
 }
-
 int main() {
 
     int arr[5] = {2,5,1,6,9};
@@ -173,18 +173,22 @@ int main() {
 
     for(int i=0; i<5; i++) {
         cout << arr[i] << " ";
-    }cout << endl;
-
+    }
+    cout << endl;
 
     return 0;
-}*/
+}
+*/
 
-/*void selectionSort_recursion(int* arr, int n){
-    // base case
+//                                    Selection Sort
+/*
+void selectionSort_recursion(int* arr, int n){
+
+    // Base Case
     if(n==0 || n==1){
         return;
     }
-    // swap one item correctly
+    // Swap one item correctly
     int min_idx = 0;
     for(int i=1;i<n;i++){
         if(arr[min_idx]>arr[i]){
@@ -192,11 +196,9 @@ int main() {
         }
     }
     swap(arr[min_idx], arr[0]);
-    // arrange other using recursion
+    // Arrange other using recursion
     selectionSort_recursion(arr+1, n-1);
-
 }
-
 int main() {
 
     int arr[5] = {2,5,1,6,9};
@@ -205,55 +207,42 @@ int main() {
 
     for(int i=0; i<5; i++) {
         cout << arr[i] << " ";
-    }cout << endl;
-
+    }
+    cout << endl;
 
     return 0;
-}*/
-
-void sortArray(int arr[], int s, int e)
-{
-    //base case 
-    if(s==e)
-    {
-        return ;
-    }
-    
-    
-    int temp=arr[s];
-    int j=s-1;
-    for(; j>=0;j--)
-    {
-        if(arr[j]>temp)
-        {
-            //shift
-            arr[j+1]=arr[j];
-        }
-        else{
-            break;
-        }
-    }
-    
-    arr[j+1]=temp;
-    
-    // recursive call
-    
-    sortArray(arr,s+1,5);
-    
-    
 }
+*/
 
-int main()
-{
+//                                 Insertion Sort
+/*
+void sortArray(int arr[], int n){
+    
+    // Base case: if n <= 1, the array is trivially sorted
+    if (n <= 1) {
+        return;
+    }
+
+    // Recursively sort the first n-1 elements
+    sortArray(arr, n - 1);
+
+    // Insert the nth element into the sorted portion of the array
+    int j = n - 1;
+    while (j>0 && arr[j-1]>arr[j]) {
+        swap(arr[j], arr[j - 1]);
+        j--;
+    }  
+}
+int main(){
+
     int arr[5]={4,7,1,11,5};
     
-    sortArray(arr,1,5);
+    sortArray(arr, 5);
     
-    for(int i=0;i<5;i++)
-    {
-        cout<<arr[i]<<" ";
+    for(int i=0;i<5;i++){
+        cout << arr[i] << " ";
     }
-
     return 0;
 }
+*/
 

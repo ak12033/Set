@@ -1,24 +1,10 @@
 #include<iostream>
 using namespace std;
 
-/*void update(int **p2) {
-    //p2 = p2 + 1;
-    //kuch change hoga  - NO
-
-    //*p2 = *p2 + 1;
-    //kuch change hoga - YES
-
-    **p2 = **p2 + 1;
-    //kuch change hoga - YES
-}
-    void update(int *p){
-        *p = (*p)  *  2;
-    }
-        void increment(int **p){
-        ++(**p);
-    }
-int main() {
+//                                 Double Pointers
 /*
+int main(){
+
     int i = 5;
     int* p = &i;
     int** p2 = &p;
@@ -36,38 +22,64 @@ int main() {
     cout << &p << endl;
     cout << p2 << endl;
 
-    cout << endl << endl;
+    return 0;
+}
+*/
+
+/*
+void update(int **p2) {
+
+    // 1.
+    // p2 = p2 + 1;
+    // kuch change hoga  - NO
+
+    // 2.
+    // *p2 = *p2 + 1;
+    // kuch change hoga - YES
+
+    // 3.
+    **p2 = **p2 + 1;
+    // kuch change hoga - YES
+
+    return ;
+}
+int main(){
+
+    int i = 5;
+    int* p = &i;
+    int** p2 = &p;
+
     cout<< "before " << i << endl;
     cout<< "before " << p << endl;
     cout<< "before " << p2 << endl;
+
     update(p2);
+    
     cout<< "after " << i << endl;
     cout<< "after " << p << endl;
     cout<< "after " << p2 << endl;
     cout << endl << endl;
 
-
-
-
-        int num = 110;
-        int *ptr = &num;
-        increment(&ptr);
-        cout << num << endl;
-
-
-
     return 0;
-}*/
+}
+*/
 
+//                                         MCQ
+/*
+int main(){
 
-//MCQ
-
-/*int main(){
     int first = 8;
     int second = 18;
     int *ptr = &second;
     *ptr = 9;
-    cout  << first << " " << second << endl;    
+    cout  << first << " " << second << endl;
+
+    return 0;
+}
+*/
+
+/*
+int main(){
 
     int first = 6;
     int *p = &first;
@@ -75,15 +87,40 @@ int main() {
     (*q)++;
     cout << first  << endl;
 
+    return 0;
+}
+*/
+
+/*
+int main(){
+
     int first = 8;
     int *p = &first;
     cout << (*p)++ << " ";
     cout << first << endl;
 
+    return 0;
+}
+*/
+
+/*
+int main(){
+
     int *p = 0;
     int first = 110;
-    *p = first;
+
+    // ERROR
+    // *p = first;
+
+    p = &first;
     cout << *p << endl;
+
+    return 0;
+}
+*/
+
+/*
+int main(){
 
     int first = 8;
     int second = 11;
@@ -92,234 +129,382 @@ int main() {
     *third = *third + 2;
     cout  << first << "  " << second << endl;
 
+    return 0;
+}
+*/
+
+/*
+int main(){
+
     float f = 12.5;
     float p = 21.5;
     float* ptr = &f;
     (*ptr)++;
     *ptr = p;
     cout << *ptr << " " << f << " " << p << endl;
-    
+
+    return 0;
+}
+*/
+
+/*
+int main(){
 
     int arr[5];
     int *ptr;
     cout << sizeof(arr) << " " << sizeof(ptr) << endl;
 
+    return 0;
+}
+*/
+
+/*
+int main(){
+
     int arr[] = {11, 21, 13, 14};
     cout << *(arr) << " " << *(arr+1) << endl;
+
+    return 0;
+}
+*/
+
+/*
+int main(){
 
     int arr[6] = {11, 12, 31};
     cout << arr << " " << &arr << endl;
 
+    return 0;
+}
+*/
+
+/*
+int main(){
+
     int arr[6] = {11, 21, 13};
     cout << (arr + 1) << endl;
+
+    return 0;
+}
+*/
+
+/*
+int main(){
 
     int arr[6] = {11, 21, 31};
     int *p = arr;
     cout << p[2] << endl;
 
+    return 0;
+}
+*/
+
+/*
+int main(){
+
     int arr[] = {11, 12, 13, 14, 15};
     cout << *(arr) << " " << *(arr + 3);
+
+    return 0;
+}
+*/
+
+/*
+int main(){
 
     int arr[] = {11, 21, 31, 41};
     int *ptr = arr++;
     cout << *ptr << endl;
 
-     char ch = 'a';
+    return 0;
+}
+*/
+
+/*
+int main(){
+
+    char ch = 'a';
     char* ptr = &ch;
     ch++;
     cout << *ptr << endl;
 
+    return 0;
+}
+*/
+
+/*
+int main(){
 
     char arr[] = "abcde";
     char *p = &arr[0];
     cout << p << endl;
 
+    return 0;
+}
+*/
+
+/*
+int main(){
+
     char arr[] = "abcde";
     char *p = &arr[0];
     p++;
-    cout << p << endl;   
+    cout << p << endl; 
+
+    return 0;
+}
+*/
+
+/*
+int main(){
 
     char str[]= "babbar";
     char *p = str;
     cout << str[0] << " " << p[0] << endl;
 
+    return 0;
+}
+*/
 
-    void update(int *p){
-        *p = (*p)  *  2;
-    }
+/*
+void update(int *p){
 
-    int main(){
-        int i = 10;
-        update(&i);
-        cout << i << endl;
-    }
+    *p = (*p)  *  2;
 
-
-    void fun(int arr[]) {
-        cout << arr[0] << " ";
-    }
-
-    int main() {
-        int arr[] = {11, 12, 13, 14};
-        fun(arr + 1);
-        cout << arr[0] << endl;
-    }
-
-
-
-    void update(int *p){
-        int a = 70;
-        p = &a;
-        *p = (*p) * (*p);
-    }
-
-    int main(){
-        int a = 70;
-        update(&a);
-        cout << a << endl;
-    }*/
-
+    return ;
+}
 int main(){
- /*   int first = 10;
-    int *p = &first;
-    int **q = &p;
-    int second = 20;
-    *q = &second;
-    (*p)++;
-    cout << first << " " << second << endl;
-    */
 
-   int first = 110;
+    int i = 10;
+    update(&i);
+    cout << i << endl;
+
+    return 0;
+}
+*/
+
+/*
+void fun(int arr[]) {
+
+    cout << arr[0] << " ";
+
+    return;
+}
+int main() {
+
+    int arr[] = {11, 12, 13, 14};
+    fun(arr + 1);
+    cout << arr[0] << endl;
+
+    return 0;
+}
+*/
+
+/*
+void update(int *p){
+
+    int a = 70;
+    p = &a;
+    *p = (*p) * (*p);
+
+    return ;
+}
+int main(){
+
+    int a = 70;
+    update(&a);
+    cout << a << endl;
+
+    return 0;
+}
+*/
+
+/*
+int main(){
+
+    int first = 110;
     int *p = &first;
     int **q = &p;
     int second = (**q)++ + 9;
     cout << first << " " << second << endl; 
+
+    return 0;
 }
+*/
+
 /*
+int main(){
+
     int first = 100;
     int *p = &first;
     int **q = &p;
     int second = ++(**q);
     int *r = *q;
     ++(*r);
-    cout << first << " " << second << endl; 
+    cout << first << " " << second << endl;
 
-    void increment(int **p){
-        ++(**p);
-    }
+    return 0;
+}
+*/
 
-    int main(){
-        int num = 110;
-        int *ptr = &num;
-        increment(&ptr);
-        cout << num << endl;
-    }  
+/*
+void increment(int **p){
 
+    ++(**p);
 
+    return ;
+}
+int main(){
 
-    int main()
-    {
+    int num = 110;
+    int *ptr = &num;
+    increment(&ptr);
+    cout << num << endl;
+
+    return 0;
+}
+*/
+
+/*
+int main(){
+
+    int first = 10;
+    int *p = &first;
+    int **q = &p;
+    int second = 20;
+    *q = &second;
+    (*p)++;
+    cout << first << " " << second << endl;
+
+    return 0;
+}
+*/
+
+/*
+int main(){
+
     int arr[] = {41, 52, 36, 74};
     int *p = (arr + 1);
     cout << *arr + 8;
+
     return 0;
+}
+*/
+
+/*
+int main(){ 
+
+    char *p; 
+    char str[] = "pqrstuv";
+    p = str;
+    p += 3;
+    cout << p;
+
+    return 0;
+}
+*/
+
+/*
+int main(){
+
+    char arr[20];
+    int i;
+    for(i = 0; i < 10; i++) {
+        *(arr + i) = 65 + i;
     }
+    *(arr + i) = '\0';
+    cout << arr;
 
+    return 0;
+}
+*/
 
-    int main()
-    { 
-        char *p; 
-        char str[] = "pqrstuv";
-        p = str;
-        p += 3;
-        cout << p;
-        return 0;
+/*
+int main(){
+
+    float arr[5] = {12.5, 10.0, 13.5, 90.5, 0.5};
+    float *ptr1 = &arr[0];
+    float *ptr2 = ptr1 + 3;
+    cout<<*ptr2<<" ";
+    cout<< ptr2 - ptr1;
+
+    return 0;
+}
+*/
+
+/*
+int main() {
+
+    char st[] = "ABCD";
+    for(int i = 0; st[i] != '\0'; i++) {
+        cout << st[i] << " " <<*(st)+i << " " << *(i+st) << " " << i[st]<<endl;
     }
+    return 0;
+}
+*/
 
+/*
+void Q(int z){
 
-    int main()
-    {
-        char arr[20];
-        int i;
-        for(i = 0; i < 10; i++) {
-            *(arr + i) = 65 + i;
-        }
-        *(arr + i) = '\0';
-        cout << arr;
-        return 0;
-    }
+    z += z;
+    cout<<z << " ";
 
-    int main()
-    {
-        float arr[5] = {12.5, 10.0, 13.5, 90.5, 0.5};
-        float *ptr1 = &arr[0];
-        float *ptr2 = ptr1 + 3;
-        cout<<*ptr2<<" ";
-        cout<< ptr2 - ptr1;
-        return 0;
-    }
+    return ;
+}
+void P(int *y) {
 
+    int x = *y + 2;
+    Q(x);
+    *y = x - 1; 
+    cout<<x << " ";
 
-    int main() {
-        char st[] = "ABCD";
-        for(int i = 0; st[i] != ‘\0’; i++) {
-            cout << st[i] << *(st)+i << *(i+st) << i[st];
-        }
-        return 0;
-    }
+    return ;
+}
+int main(){
 
-    void Q(int z)
-    {
-        z += z;
-        cout<<z << " ";
-    }
+    int x = 5;
+    P(&x);
+    cout<<x;
 
-    void P(int *y) 
-    {
-        int x = *y + 2;
-        Q(x);
-        *y = x - 1; 
-        cout<<x << " ";
-    }
+    return 0;
+}
+*/
 
-    int main()
-    {
-        int x = 5;
-        P(&x);
-        cout<<x;
-        return 0;
-    }
+/*
+int main(){
 
+    int ***r, **q, *p, i=8;
+    p = &i;
+    (*p)++;
+    q = &p;
+    (**q)++;
+    r = &q;
+    cout<<*p << " " <<**q << " "<<***r;
 
-    int main()
-    {
-        int ***r, **q, *p, i=8;
-        p = &i;
-        (*p)++;
-        q = &p;
-        (**q)++;
-        r = &q;
-        cout<<*p << " " <<**q << " "<<***r;
-        return 0;
-    }
+    return 0;
+}
+*/
 
+/*
+int f(int x, int *py, int **ppz) {
 
-    int f(int x, int *py, int **ppz) {
-        int y, z;
-        **ppz += 1;
-        z = **ppz;
-        *py += 2;
-        y = *py;
-        x += 3;
-        return x + y + z;
-    }
+    int y, z;
+    **ppz += 1;
+    z = **ppz;
+    *py += 2;
+    y = *py;
+    x += 3;
 
-    int main() {
-        int c, *b, **a;
-        c = 4;
-        b = &c;
-        a = &b;
-        cout << f(c, b, a);
-        return 0;
-    }
-}*/
+    return x + y + z;
+}
+int main() {
+
+    int c, *b, **a;
+    c = 4;
+    b = &c;
+    a = &b;
+    cout << f(c, b, a);
+
+    return 0;
+}
+*/
