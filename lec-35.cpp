@@ -40,6 +40,10 @@ void merge(vector<int> &arr, int low, int mid, int high) {
     for (int i = low; i <= high; i++) {
         arr[i] = temp[i-low];
     }
+    // Reason for line no. 41
+    // let arr = [4,3,2,1] For the second half temp array is temp = [1,2]. While copying elements of 
+    // temp to arr low = 2 and high = 3 but temp index starts from 0, 1. Therefore,
+    // arr[2] = temp[2-2](not temp[2]) & arr[3] = temp[3-2](not temp[3])
 }
 void mergeSort(vector<int> &arr, int low, int high) {
 

@@ -1,12 +1,4 @@
-int* fun(int n) {
-
-    int* ptr = &n;
-    return ptr;
-}
-int main() {
-
-    int n = 5;
-    fun(n);
-
-    return 0;
-}
+b->setLevel('A');
+    b->setHealth(70);
+    cout << "level is  " << b->getLevel() << endl;
+    cout << " health is " << b->getHealth() << endl;
