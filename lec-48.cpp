@@ -1,112 +1,233 @@
 #include<iostream>
+#include<math.h>
+#include<unordered_map>
 using namespace std;
+
+//                      Remove Duplicates from Sorted List
+/*
+class ListNode{
+
+    public:
+        int val;
+        ListNode* next;
+
+        // Constrcutor
+        ListNode(int d) {
+            this->val = d;
+            this->next = NULL;
+        }
+};
+ListNode* deleteDuplicates(ListNode* head) {
+
+    // Empty List
+    if(head == NULL){
+        return NULL;
+    }
+    // Non-Empty List
+    ListNode* curr = head;
+    while(curr != NULL) {
+        if( (curr -> next != NULL) && curr -> val == curr -> next -> val) {
+            ListNode* next_next = curr ->next -> next;
+            ListNode* nodeToDelete = curr -> next;
+            delete(nodeToDelete);
+            curr -> next = next_next;
+        }
+        else{
+            curr = curr -> next;
+        }   
+    }
+    return head;
+}
+int main() {
+
+    // Creating a linked list: 1 -> 1 -> 2 -> 3 -> 3
+    ListNode* head = new ListNode(1);
+    head->next = new ListNode(1);
+    head->next->next = new ListNode(2);
+    head->next->next->next = new ListNode(3);
+    head->next->next->next->next = new ListNode(3);
+
+    // Call deleteDuplicates function
+    head = deleteDuplicates(head);
+
+    // Print the modified linked list
+    ListNode* temp = head;
+    while (temp != NULL) {
+        cout << temp->val << " ";
+        temp = temp->next;
+    }
+    return 0;
+}
+*/
+
+//                 Remove Duplicates From an Unsorted Linked List
+/*
 class Node{
 
-public:
-    int data;
-    Node* next;
+    public:
+        int data;
+        Node* next;
 
-    //constrcutor
-    Node(int d) {
-        this->data = d;
-        this->next = NULL;
-    }
+        // Constrcutor
+        Node(int d) {
+            this->data = d;
+            this->next = NULL;
+        }
 };
-
-void print(Node* tail) {
-
-    Node* temp = tail;
-
-    //empty list
-    if(tail == NULL) {
-        cout << "List is Empty "<< endl;
-        return ;
-    }
-
-    do {
-        cout << tail -> data << " ";
-        tail = tail -> next;
-    } while(tail != temp);
-
-    cout << endl;
-} 
-
-// Inserting node in a circular linked list
-void insertNode(Node *&head, Node *&tail , int d){
-
-    Node * newNode = new Node(d);
-
+Node *removeDuplicates(Node *head){  
+    
+    // Empty List
     if(head == NULL){
-        head = newNode;
-        tail = newNode;
-        head->next = head;
+        return NULL;
+    }
+    // Non-Empty List
+    Node* curr = head;
+    Node* prev = NULL;
+    unordered_map<int, bool> visited;
+    while(curr != NULL){
+        if(!visited[curr->data]){
+            visited[curr->data] = true;
+            prev = curr;
+            curr = curr -> next;
+        }
+        else{
+            prev -> next = curr -> next;
+            delete curr;
+        }
+        curr = prev -> next;
+    }
+    return head;
+}
+void printList(Node* head) {
+
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+int main() {
+
+    // Creating a linked list: 1 -> 2 -> 2 -> 3 -> 4 -> 4
+    Node* head = new Node(1);
+    head->next = new Node(2);
+    head->next->next = new Node(2);
+    head->next->next->next = new Node(3);
+    head->next->next->next->next = new Node(4);
+    head->next->next->next->next->next = new Node(4);
+
+    cout << "Original list: ";
+    printList(head);
+
+    // Remove Duplicates
+    head = removeDuplicates(head);
+
+    cout << "List after removing duplicates: ";
+    printList(head);
+
+    return 0;
+}
+*/
+
+//                           Dividing Circular Linked List
+/*
+class Node {
+
+    public:
+        int data;
+        Node* next;
+
+        Node(int data) {
+            this->data = data;
+            this->next = NULL;
+        }
+};
+void printList(Node* tail) {
+
+    if(tail == NULL) {
+        cout << "List is Empty!" << endl;
         return;
     }
 
-    tail->next = newNode;
-    tail = tail->next;
-    newNode->next = head;
+    Node* temp = tail;
+    cout << "Circular List : ";
 
-}
-
-int findLen(Node *&head){
-
-    int cnt =1;
-    Node *temp = head->next;
-
-    while(temp!=head){
+    do {
+        cout << temp->data << " ";
         temp = temp->next;
-        cnt++;
+    } while(temp != tail);
+    cout << endl;
+}
+void insertion(Node* &tail, int data, int target) {
+
+    Node *insertNode = new Node(data);
+
+    if(tail == NULL) {
+        tail = insertNode;
+        insertNode->next = tail;
+        return;
     }
+    Node* curr = tail;
 
-    return cnt;
-
-}
-
-void divideLL(Node *&head,Node *&tail, int n){
-
-    int k = n/2;
-    if(n%2 != 0) k++; 
-
-    // divide it ito first k nodes
-    Node * temp = head;
-    int i=1;
-    while(i<k){
-        temp=temp->next;
-        i++;
+    while(curr->data != target) {
+        curr = curr->next;
     }
-
-    // Storing forward node
-    Node * frwd = temp->next;
-
-    // break point and pointing it to head
-    temp->next = head;
-
-    // breaking the tail connection with head and joining it with frwd.
-    tail->next = frwd; 
-
-    print(head); // Printing 1st circular LL
-    print(frwd); // Printing 2nd circulat LL
-
+    insertNode->next = curr->next;
+    curr->next = insertNode;
 }
+int getLength(Node* tail) {
 
-int main(){
-
-    Node * head = NULL;
-    Node * tail = NULL;
-
-    insertNode(head,tail,10);
-    insertNode(head,tail,9);
-    insertNode(head,tail,78);
-    insertNode(head,tail,19);
-    insertNode(head,tail,100);
-    insertNode(head,tail,7463);
-    print(head);
-    cout << head->data << endl;
-    cout << tail->data << endl;
-
-    int n= findLen(head);
-    cout << n << endl; 
-    
-    divideLL(head,tail,n);
+    if(tail == NULL) {
+        return 0;
+    }
+    int count = 1;
+    Node* temp = tail->next;
+    while(temp != tail) {
+        count++;
+        temp = temp->next;
+    }
+    return count;
 }
+pair<Node*, Node*> splitList(Node* tail) {
+
+    Node* tail1 = tail;
+    Node* tail2 = NULL;
+    int len = (getLength(tail) + 1) / 2;
+
+    Node* temp = tail;
+    while(len > 1) {
+        temp = temp->next;
+        len--;
+    }
+    tail2 = temp->next;
+    temp->next = tail;
+    temp = tail2;
+    while(temp->next != tail) {
+        temp = temp->next;
+    }
+    temp->next = tail2;
+
+    return {tail1, tail2};
+}
+int main() {
+
+    Node *tail = NULL;
+
+    insertion(tail, pow(2,4), 2);
+    insertion(tail, pow(2,3), 16);
+    insertion(tail, pow(2,5), 8);
+    insertion(tail, pow(2,2), 16);
+    insertion(tail, pow(2,0), 8);
+
+    printList(tail);
+
+    pair<Node*, Node*> solution;
+    solution = splitList(tail);
+
+    printList(solution.first);
+    printList(solution.second);
+
+    return 0;
+}
+*/

@@ -1,191 +1,156 @@
-#include<bits/stdc++.h>
-#include<queue>
 #include <iostream>
+#include <vector>
+#include <queue>
 using namespace std;
 
-//                                  Kth smallest element using max heap
-
+//                               Kth smallest element
 /*
-int kthSmallest(int arr[], int l, int r, int k) {
-        //code here
-        priority_queue<int> pq;
+int kthSmallest(vector<int>& arr, int k) {
+
+    priority_queue<int> pq;
         
-        //step 1
-        for(int i = 0; i<k; i++){
+    for(int i=0; i<k; i++) {
+        pq.push(arr[i]);
+    }
+    for(int i=k; i<arr.size(); i++) {
+        if(arr[i] < pq.top()) {
+            pq.pop();
             pq.push(arr[i]);
         }
-        
-        //step 2
-        for(int i = k; i <= r; i++){
-            if(arr[i]<pq.top()){
-                pq.pop();
-                pq.push(arr[i]);
-            }
-        }
-        int ans = pq.top();
-        return ans;
     }
+    return pq.top();
+}
+int main() {
 
-    int main() {
-    // Example array
-    int arr[] = {7, 10, 4, 3, 20, 15};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    
-    // Define the range and the value of k
-    int l = 0;
-    int r = n - 1;
-    int k = 3;
-    
-    int result = kthSmallest(arr, l, r, k);
-    cout << result << endl;
+    vector<int> arr = {12, 3, 5, 7, 19, 8};
+    int k = 4;
+
+    // Result
+    cout << "The " << k << "th smallest element is: " << kthSmallest(arr, k) << endl;
 
     return 0;
 }
 */
 
-//                                  Kth largest element using min heap
-
+//                                  Kth largest element
 /*
-int kthlargest(int arr[], int l, int r, int k) {
-        //code here
-        priority_queue<int, vector<int>, greater<int> > minheap;
+int kthLargest(vector<int>& arr, int k) {
+
+    priority_queue<int, vector<int>, greater<int> > minheap;
         
-        //step 1
-        for(int i = 0; i<k; i++){
+    for(int i=0; i<k; i++) {
+        minheap.push(arr[i]);
+    }
+    for(int i=k; i<arr.size(); i++) {
+        if(arr[i] > minheap.top()) {
+            minheap.pop();
             minheap.push(arr[i]);
         }
-        
-        //step 2
-        for(int i = k; i <= r; i++){
-            if(arr[i]>minheap.top()){
-                minheap.pop();
-                minheap.push(arr[i]);
-            }
-        }
-        int ans = minheap.top();
-        return ans;
     }
+    return minheap.top();
+}
+int main() {
 
-    int main() {
-    // Example array
-    int arr[] = {7, 10, 4, 3, 20, 15};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    
-    // Define the range and the value of k
-    int l = 0;
-    int r = n - 1;
-    int k = 2;
-    
-    int result = kthlargest(arr, l, r, k);
-    cout << result << endl;
+    vector<int> arr = {12, 3, 5, 7, 19, 8};
+    int k = 4;
+
+    // Result
+    cout << "The " << k << "th largest element is: " << kthLargest(arr, k) << endl;
 
     return 0;
 }
 */
 
-//                                                           Is tree a heap
-
+//                                     Is tree a heap
 /*
-// Definition of the Node structure
-struct Node {
-    int data;
-    Node* left;
-    Node* right;
+class Node {
 
-    Node(int value) : data(value), left(NULL), right(NULL) {}
+    public:
+        int data;
+        Node* left;
+        Node* right;
+
+        Node(int value) : data(value), left(NULL), right(NULL) {
+
+        }
 };
+int countNodes(Node* root) {
 
-class Solution {
-  public:
-    int countNodes(struct Node* root){
-        //base case
-        if(root == NULL){
-            return 0;
-        }
-        int ans = 1 + countNodes(root->left) + countNodes(root->right);
-        return ans;
+    // Base Case
+    if(root == NULL) {
+        return 0;
     }
-    bool isCBT(struct Node* root,int index,int cnt){
-        if(root == NULL){
-            return true;
-        }
-        if(index >= cnt){
-            return false;
-        }
-        else{
-            bool left = isCBT(root->left,2*index + 1,cnt);
-            bool right = isCBT(root->right,2*index + 2,cnt);
-            return (left && right);
-        }
-    }
-    bool isMaxOrder(struct Node* root){
-        //leaf node
-        if(root->left == NULL && root->right == NULL){
-            return true;
-        }
-        if(root->right == NULL){
-            return(root->data > root->left->data );
-        }
-        else{
-            bool left = isMaxOrder(root->left);
-            bool right = isMaxOrder(root->right);
-            return (left && right && (root->data > root->left->data && root->data > root->right->data));
-        }
-    }
-    bool isHeap(struct Node* tree) {
-        // code here
-        int index = 0;
-        int totalCount = countNodes(tree);
-        if(isCBT(tree,index,totalCount) && isMaxOrder(tree)){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-};
+    int ans = 1 + countNodes(root->left) + countNodes(root->right);
+    return ans;
+}
+bool isCBT(Node* root, int index, int cnt) {
 
-Node* createTree() {
-    // Example tree:
-    //         10
-    //        /  \
-    //       9    8
-    //      / \  / \
-    //     7  6 5   4
+    if(root == NULL) {
+        return true;
+    }
+    if(index >= cnt) {
+        return false;
+    }
+    else {
+        bool left = isCBT(root->left, 2*index + 1, cnt);
+        bool right = isCBT(root->right, 2*index + 2, cnt);
+        return (left && right);
+    }
+}
+bool isMaxOrder(Node* root) {
+        
+    // Leaf node
+    if(root->left == NULL && root->right == NULL) {
+        return true;
+    }
+    if(root->right == NULL) {
+        return(root->data > root->left->data);
+    }
+    else {
+        bool left = isMaxOrder(root->left);
+        bool right = isMaxOrder(root->right);
+        return (left && right && (root->data > root->left->data && root->data > root->right->data));
+    }
+}
+bool isHeap(Node* tree) {
+
+    int index = 0;
+    int totalCount = countNodes(tree);
+    if(isCBT(tree, index, totalCount) && isMaxOrder(tree)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+int main() {
 
     Node* root = new Node(10);
-    root->left = new Node(9);
-    root->right = new Node(8);
-    root->left->left = new Node(7);
-    root->left->right = new Node(6);
-    root->right->left = new Node(5);
-    root->right->right = new Node(4);
-    
-    return root;
-}
+    root->left = new Node(5);
+    root->right = new Node(3);
+    root->left->left = new Node(2);
+    root->left->right = new Node(1);
 
-int main() {
-    Solution solution;
-    Node* root = createTree();
-
-    if (solution.isHeap(root)) {
-        cout << "The tree is a Heap." << endl;
+    if(isHeap(root)) {
+        cout << "The tree is a heap!" << endl;
     } else {
-        cout << "The tree is not a Heap." << endl;
+        cout << "The tree is NOT a heap!" << endl;
     }
+    
+    // Cleanup Memory
+    delete root->left->left;  
+    delete root->left->right;
+    delete root->left;     
+    delete root->right;   
+    delete root;        
 
-    // Clean up allocated memory (in a real application, you'd need to free the memory here)
     return 0;
 }
 */
 
-//                                                   Merge two binary Max heaps
-
+//                               Merge Two Binary Max Heaps
 /*
-class Solution{
-    public:
-    //1 based indexing
-    void maxheapify(vector<int> &arr, int n, int i){
+void heapify(vector<int>& arr, int n, int i) {
 
     int largest = i;
     int left = 2*i + 1;
@@ -198,40 +163,36 @@ class Solution{
         largest = right;
     }
 
-    if(largest != i){
-        swap(arr[largest],arr[i]);
-        maxheapify(arr,n,largest);
+    if(largest != i) {
+        swap(arr[largest], arr[i]);
+        heapify(arr, n, largest);
     }  
 }
-    vector<int> mergeHeaps(vector<int> &a, vector<int> &b, int n, int m) {
-        // your code here
-        //step 1: merge both arrays into one
-        vector<int> ans;
-        for(auto i:a){
-            ans.push_back(i);
-        }
-        for(auto i:b){
-            ans.push_back(i);
-        }
-        //step 2: heap creation
-        int size = ans.size();
-        for(int i = size/2-1 ; i>=0; i--){
-            maxheapify(ans,size,i);
-        }
-        return ans;
-    }
-};
+vector<int> mergeHeaps(vector<int>& a, vector<int>& b, int n, int m) {
 
+    // Step 1: Merge both arrays into one
+    vector<int> ans;
+    for(auto i : a) {
+        ans.push_back(i);
+    }
+    for(auto i : b) {
+        ans.push_back(i);
+    }
+    // Step 2: Heap creation
+    int size = ans.size();
+    for(int i = size/2 - 1; i >= 0; i--) {
+        heapify(ans, size, i);
+    }
+    return ans;
+}
 int main() {
-    Solution solution;
-    
-    // Example heaps
+
     vector<int> a = {10, 5, 6, 2};
     vector<int> b = {12, 7, 9};
 
-    vector<int> mergedHeap = solution.mergeHeaps(a, b, a.size(), b.size());
+    vector<int> mergedHeap = mergeHeaps(a, b, a.size(), b.size());
 
-    // Output the merged heap
+    // Result
     cout << "Merged Heap: ";
     for (int num : mergedHeap) {
         cout << num << " ";
@@ -242,111 +203,122 @@ int main() {
 }
 */
 
-//                                                   Convert BST to Min Heap
+//                               Minimum Cost of ropes
+/*
+int minCost(vector<int>& arr) {
+        
+    priority_queue <int, vector<int>, greater<int>> pq;
 
-struct BinaryTreeNode {
-    int data;
-    BinaryTreeNode* left;
-    BinaryTreeNode* right;
+    for(int i=0; i<arr.size(); i++) {
+        pq.push(arr[i]);
+    }
+        
+    int cost = 0;
+    while(pq.size() > 1) {
+        int a = pq.top();
+        pq.pop();
+        int b = pq.top();
+        pq.pop();
+            
+        int sum = a + b;
+        cost += sum;
+        pq.push(sum);
+    }
+    return cost;
+}
+int main() {
 
-    BinaryTreeNode(int val) : data(val), left(nullptr), right(nullptr) {}
+    vector<int> arr = {4, 3, 2, 6};
+    cout << "Minimum cost to combine all ropes: " << minCost(arr) << endl;
+
+    return 0;
+}
+*/
+
+//                                Convert BST to Min Heap
+/*
+class TreeNode {
+
+    public:
+        int data;
+        TreeNode* left;
+        TreeNode* right;
+
+        TreeNode(int val) : data(val), left(nullptr), right(nullptr) {
+            
+        }
 };
+void inorder(TreeNode* root, vector<int>& ans) {
 
-void inorder(BinaryTreeNode* root, vector<int> &ans)
-{
-	// base case
-	if(root==NULL)
-	{
+	// Base Case
+	if(root == NULL) {
 		return;
 	}
-
 	inorder(root->left, ans);
 	ans.push_back(root->data);
 	inorder(root->right, ans);
 }
-
-void preorderFill(BinaryTreeNode* root, int &index, vector<int> &ans)
-{
-	if(root==NULL)
-	{
+void preorderFill(TreeNode* root, int& index, vector<int>& ans) {
+	
+    // Base Case
+    if(root == NULL) {
 		return;
 	}
-
-	root->data=ans[index++];
+	root->data = ans[index++];
 	preorderFill(root->left, index, ans);
 	preorderFill(root->right, index, ans);
 }
+TreeNode* convertBST(TreeNode* root) {
 
-BinaryTreeNode* convertBST(BinaryTreeNode* root)
-{
 	vector<int> ans;
 	inorder(root, ans);
 
-	int index=0;
+	int index = 0;
 	preorderFill(root, index, ans);
 
 	return root;
 }
+void LevelOrderTraversal(TreeNode* root) {
 
-void printInOrder(BinaryTreeNode* root) {
-    if (root == nullptr) {
+    if (root == NULL) {
         return;
     }
-    printInOrder(root->left);
-    cout << root->data << " ";
-    printInOrder(root->right);
-}
-void levelOrderTraversal(BinaryTreeNode* root) {
-    queue<BinaryTreeNode*> q;
+
+    queue<TreeNode*> q;
     q.push(root);
-    q.push(NULL);
-
-    while(!q.empty()) {
-        BinaryTreeNode* temp = q.front();
+    while (!q.empty()) {
+        TreeNode* node = q.front();
         q.pop();
+        cout << node->data << " ";
 
-        if(temp == NULL) { 
-            //purana level complete traverse ho chuka hai
-            cout << endl;
-            if(!q.empty()) { 
-                //queue still has some child ndoes
-                q.push(NULL);
-            }  
+        if (node->left) {
+            q.push(node->left);
         }
-        else{
-            cout << temp -> data << " ";
-            if(temp ->left) {
-                q.push(temp ->left);
-            }
-
-            if(temp ->right) {
-                q.push(temp ->right);
-            }
+        if (node->right) {
+            q.push(node->right);
         }
     }
+    cout << endl;
 }
 int main() {
-    // Constructing a sample BST
-    BinaryTreeNode* root = new BinaryTreeNode(4);
-    root->left = new BinaryTreeNode(2);
-    root->right = new BinaryTreeNode(6);
-    root->left->left = new BinaryTreeNode(1);
-    root->left->right = new BinaryTreeNode(3);
-    root->right->left = new BinaryTreeNode(5);
-    root->right->right = new BinaryTreeNode(7);
+  
+    //          4
+    //        /   \
+    //       2     6
+    //      / \   / \
+    //     1   3 5   7
 
+    TreeNode* root = new TreeNode(4);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(6);
+    root->left->left = new TreeNode(1);
+    root->left->right = new TreeNode(3);
+    root->right->left = new TreeNode(5);
+    root->right->right = new TreeNode(7);
 
-    cout << "Original BST In-Order: ";
-    printInOrder(root);
-    cout << endl;
+    TreeNode* ans = convertBST(root);
+    LevelOrderTraversal(ans);
 
-    root = convertBST(root);
-
-    cout << "Converted BST In-Order: "<<endl;
-    levelOrderTraversal(root);
-
-    
-
-    // Clean up allocated memory (in a real application, you'd need to delete nodes here)
     return 0;
 }
+*/

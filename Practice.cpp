@@ -1,9 +1,11 @@
-#include<iostream>
-#include<math.h>
-#include<limits.h>
-#include<string>
-#include<vector>
+#include <iostream>
+#include <math.h>
+#include <limits.h>
+#include <string>
+#include <vector>
+#include <set>
 #include <queue>
+#include <algorithm> 
 using namespace std;
 
 //                         Longest substring consisting of only zeroes
@@ -195,5 +197,164 @@ int main(){
         temp_n = temp_n>>1;
     }
     cout << res <<endl;
+}
+*/
+
+//                          Adding Spaces to a String
+/*
+string addSpaces(string s, vector<int>& spaces) {
+
+    string ans = "";
+    int spaceIndex = 0;
+    int n = spaces.size();
+    for(int i=0; i<s.length(); i++){
+        if(spaceIndex < n && i == spaces[spaceIndex]){
+            ans.push_back(' ');
+            spaceIndex++;
+        }
+        ans.push_back(s[i]);
+    }
+    return ans;
+}
+int main() {
+
+    string s = "spacing";
+    vector<int> spaces = {0 , 1, 2, 3, 4, 5, 6};
+
+    string result = addSpaces(s, spaces);
+    cout << "Resulting string ->" << result << endl;
+
+    return 0;
+}
+*/
+
+//                                 Unique Email Addresses
+//                                      Approach 1
+/*
+string normalizeEmail(const string& email) {
+
+    int at_pos = email.find('@');
+    string local = email.substr(0, at_pos);
+    string domain = email.substr(at_pos);
+
+    // Remove '.' characters from the local part
+    local.erase(remove(local.begin(), local.end(), '.'), local.end());
+
+    // Remove the part after '+' in the local part (if any)
+    int plus_pos = local.find('+');
+    if (plus_pos != string::npos) {
+        local = local.substr(0, plus_pos);
+    }
+
+    return local + domain;
+}
+int numUniqueEmails(const vector<string>& emails) {
+
+    set<string> uniqueEmails;
+
+    for (const string& email : emails) {
+        string normalizedEmail = normalizeEmail(email);
+        uniqueEmails.insert(normalizedEmail);
+    }
+    return uniqueEmails.size();
+}
+int main() {
+
+    int n;
+    cin >> n;  
+    // Ignore newline character
+    cin.ignore();  
+
+    vector<string> emails(n);
+    for (int i = 0; i < n; ++i) {
+        // Read each email address
+        getline(cin, emails[i]);  
+    }
+    cout << numUniqueEmails(emails) << endl;  // Output number of unique mailboxes
+
+    return 0;
+}
+*/
+//                                      Approach 2
+/*
+string normalizeEmail(const string& email) {
+
+    int c = 0;
+    for(int i=0; i<email.length(); i++){
+        if(email[i]=='@'){
+            c = i;
+            break;
+        }
+    }
+    string domain;
+    for(int i=c;i<email.length();i++){
+        domain.push_back(email[i]);
+    }
+    string local;
+    for(int i=0;i<c;i++){
+        if(email[i]=='+'){
+            break;
+        }
+        else if(email[i] == '.'){
+            continue;
+        }
+        else{
+            local.push_back(email[i]);
+        }
+    }
+    return local + domain;
+}
+int numUniqueEmails(const vector<string>& emails) {
+
+    set<string> uniqueEmails;
+
+    for (const string& email : emails) {
+        string normalizedEmail = normalizeEmail(email);
+        uniqueEmails.insert(normalizedEmail);
+    }
+    return uniqueEmails.size();
+}
+int main() {
+
+    int n;
+    cin >> n;  
+    // Ignore newline character
+    cin.ignore();  
+
+    vector<string> emails(n);
+    for (int i = 0; i < n; ++i) {
+        // Read each email address
+        getline(cin, emails[i]);  
+    }
+    cout << numUniqueEmails(emails) << endl;  // Output number of unique mailboxes
+
+    return 0;
+}
+*/
+
+//             Rearrange an array such that ‘arr[j]’ becomes ‘i’ if ‘arr[i]’ is ‘j’
+/*
+int main() {
+
+    int N;
+    cin >> N;
+
+    vector<int> arr(N);
+    for (int i=0; i<N; i++) {
+        cin >> arr[i];
+    }
+
+    vector<int> result(N, 0);
+    for (int i=0; i<N; i++) {
+        result[arr[i]] = i;
+    }
+
+    // Print the modified array
+    for (int i=0; i<N; i++) {
+        cout << result[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
 }
 */

@@ -8,28 +8,28 @@ class Hero {
     
     // Properties
     private:
-    int health;
+        int health;
 
     public:
-    char level;
+        char level;
 
-    // Methods
-    int getHealth() {
+        // Methods
+        int getHealth() {
 
-        return health;
-    }
-    char getLevel() {
+            return health;
+        }
+        char getLevel() {
 
-        return level;
-    }
-    void setHealth(int h) {
+            return level;
+        }
+        void setHealth(int h) {
 
-        health = h;
-    }
-    void setLevel(char ch) {
+            health = h;
+        }
+        void setLevel(char ch) {
 
-        level = ch;
-    }
+            level = ch;
+        }
 };
 int main(){
 
@@ -57,28 +57,28 @@ class Hero {
     
     // Properties
     private:
-    int health;
+        int health;
 
     public:
-    char level;
+        char level;
 
-    // Methods
-    int getHealth() {
+        // Methods
+        int getHealth() {
 
-        return health;
-    }
-    char getLevel() {
+            return health;
+        }
+        char getLevel() {
 
-        return level;
-    }
-    void setHealth(int h) {
+            return level;
+        }
+        void setHealth(int h) {
 
-        health = h;
-    }
-    void setLevel(char ch) {
+            health = h;
+        }
+        void setLevel(char ch) {
 
-        level = ch;
-    }
+            level = ch;
+        }
 };
 int main(){
 
@@ -121,43 +121,43 @@ class Hero {
     
     // Properties
     private:
-    int health;
+        int health;
 
     public:
-    char *name;
-    char level;
+        char *name;
+        char level;
 
-    Hero() {
+        Hero() {
 
-        cout << "Simple constructor called" << endl;
-    }
-    // Paramerterised Constructor
-    Hero(int health) {
+            cout << "Simple constructor called" << endl;
+        }
+        // Paramerterised Constructor
+        Hero(int health) {
 
-        this -> health = health;
-    }
-    Hero(int health, char level) {
+            this -> health = health;
+        }
+        Hero(int health, char level) {
 
-        this -> level = level;
-        this -> health = health;
-    }
-    void print(){
+            this -> level = level;
+            this -> health = health;
+        }
+        void print(){
 
-        cout << "health: " << this->health << endl;
-        cout <<"level: " << this->level << endl;
-    }
-    int getHealth() {
-        return health;
-    }
-    char getLevel() {
-        return level;
-    }
-    void setHealth(int h) {
-        health = h;
-    }
-    void setLevel(char ch) {
-        level = ch;
-    }
+            cout << "health: " << this->health << endl;
+            cout <<"level: " << this->level << endl;
+        }
+        int getHealth() {
+            return health;
+        }
+        char getLevel() {
+            return level;
+        }
+        void setHealth(int h) {
+            health = h;
+        }
+        void setLevel(char ch) {
+            level = ch;
+        }
 };
 int main(){
 
@@ -185,54 +185,54 @@ class Hero {
     
     // Properties
     private:
-    int health;
+        int health;
 
     public:
-    char level;
+        char level;
 
-    Hero() {
+        Hero() {
 
-        cout << "Simple constructor called" << endl;
-    }
-    //Paramerterised Constructor
-    Hero(int health) {
+            cout << "Simple constructor called" << endl;
+        }
+        //Paramerterised Constructor
+        Hero(int health) {
 
-        this -> health = health;
-    }
-    Hero(int health, char level) {
+            this -> health = health;
+        }
+        Hero(int health, char level) {
 
-        this -> level = level;
-        this -> health = health;
-    }
-    // Copy constructor
-    Hero(Hero& temp) {
+            this -> level = level;
+            this -> health = health;
+        }
+        // Copy constructor
+        Hero(Hero& temp) {
 
-        cout << "Copy constructor called" << endl;
-        this->health = temp.health;
-        this->level = temp.level;
-    }
-    void print(){
+            cout << "Copy constructor called" << endl;
+            this->health = temp.health;
+            this->level = temp.level;
+        }
+        void print(){
 
-        cout << "health: " << this->health << endl;
-        cout <<"level: " << this->level << endl;
-    }
+            cout << "health: " << this->health << endl;
+            cout <<"level: " << this->level << endl;
+        }
 
-    int getHealth() {
+        int getHealth() {
 
-        return health;
-    }
-    char getLevel() {
+            return health;
+        }
+        char getLevel() {
 
-        return level;
-    }
-    void setHealth(int h) {
+            return level;
+        }
+        void setHealth(int h) {
 
-        health = h;
-    }
-    void setLevel(char ch) {
+            health = h;
+        }
+        void setLevel(char ch) {
 
-        level = ch;
-    }
+            level = ch;
+        }
 };
 int main(){
 
@@ -252,44 +252,44 @@ class Hero {
     
     // Properties
     private:
-    int health;
+        int health;
 
     public:
-    char *name;
-    char level;
+        char *name;
+        char level;
 
-    Hero() {
+        Hero() {
 
-        cout << "Simple constructor called" << endl;
-        name = new char[100];
-    }
-    void print(){
+            cout << "Simple constructor called" << endl;
+            name = new char[100];
+        }
+        void print(){
 
-        cout << "[Name : " << this->name<< ", ";
-        cout << "Health : " << this->health << ", ";
-        cout <<"Level : " << this->level << "]";
-        cout << endl;
-    }
-    int getHealth() {
+            cout << "[Name : " << this->name<< ", ";
+            cout << "Health : " << this->health << ", ";
+            cout <<"Level : " << this->level << "]";
+            cout << endl;
+        }
+        int getHealth() {
 
-        return health;
-    }
-    char getLevel() {
+            return health;
+        }
+        char getLevel() {
 
-        return level;
-    }
-    void setHealth(int h) {
+            return level;
+        }
+        void setHealth(int h) {
 
-        health = h;
-    }
-    void setLevel(char ch) {
+            health = h;
+        }
+        void setLevel(char ch) {
 
-        level = ch;
-    }
-    void setName(char name[]) {
+            level = ch;
+        }
+        void setName(char name[]) {
 
-        this->name = name;
-    }
+            this->name = name;
+        }
 };
 int main() {
 
@@ -320,55 +320,55 @@ class Hero {
     
     // Properties
     private:
-    int health;
+        int health;
 
     public:
-    char *name;
-    char level;
+        char *name;
+        char level;
 
-    Hero() {
+        Hero() {
 
-        cout << "Simple constructor called" << endl;
-        name = new char[100];
-    }
-    //copy constructor
-    Hero(Hero& temp) {
+            cout << "Simple constructor called" << endl;
+            name = new char[100];
+        }
+        //copy constructor
+        Hero(Hero& temp) {
 
-        char *ch = new char[strlen(temp.name) + 1];
-        strcpy(ch, temp.name);
-        this->name = ch;
+            char *ch = new char[strlen(temp.name) + 1];
+            strcpy(ch, temp.name);
+            this->name = ch;
 
-        cout << "Copy constructor called" << endl;
-        this->health = temp.health;
-        this->level = temp.level;
-    }
-    void print(){
+            cout << "Copy constructor called" << endl;
+            this->health = temp.health;
+            this->level = temp.level;
+        }
+        void print(){
 
-        cout << "[Name : " << this->name<< ", ";
-        cout << "Health : " << this->health << ", ";
-        cout <<"Level : " << this->level << "]";
-        cout << endl;
-    }
-    int getHealth() {
+            cout << "[Name : " << this->name<< ", ";
+            cout << "Health : " << this->health << ", ";
+            cout <<"Level : " << this->level << "]";
+            cout << endl;
+        }
+        int getHealth() {
 
-        return health;
-    }
-    char getLevel() {
+            return health;
+        }
+        char getLevel() {
 
-        return level;
-    }
-    void setHealth(int h) {
+            return level;
+        }
+        void setHealth(int h) {
 
-        health = h;
-    }
-    void setLevel(char ch) {
+            health = h;
+        }
+        void setLevel(char ch) {
 
-        level = ch;
-    }
-    void setName(char name[]) {
+            level = ch;
+        }
+        void setName(char name[]) {
 
-        this->name = name;
-    }
+            this->name = name;
+        }
 };
 int main() {
 
@@ -393,38 +393,121 @@ int main() {
 }
 */
 
+//                              Copy Assignment Operator
+/*
+class Hero {
+    
+    // Properties
+    private:
+        int health;
+
+    public:
+        char *name;
+        char level;
+
+        Hero() {
+
+            cout << "Simple constructor called" << endl;
+            name = new char[100];
+        }
+        // Copy constructor
+        Hero(Hero& temp) {
+
+            char *ch = new char[strlen(temp.name) + 1];
+            strcpy(ch, temp.name);
+            this->name = ch;
+
+            cout << "Copy constructor called" << endl;
+            this->health = temp.health;
+            this->level = temp.level;
+        }
+        void print(){
+
+            cout << "[Name : " << this->name<< ", ";
+            cout << "Health : " << this->health << ", ";
+            cout <<"Level : " << this->level << "]";
+            cout << endl;
+        }
+        int getHealth() {
+
+            return health;
+        }
+        char getLevel() {
+
+            return level;
+        }
+        void setHealth(int h) {
+
+            health = h;
+        }
+        void setLevel(char ch) {
+
+            level = ch;
+        }
+        void setName(char name[]) {
+
+            this->name = name;
+        }
+};
+int main() {
+
+    Hero hero1;
+
+    hero1.setHealth(12);
+    hero1.setLevel('D');
+    char name[7] = "Babbar";
+    hero1.setName(name);
+
+    // Use user-defined copy constructor
+    Hero hero2(hero1);
+    // Hero hero2 = hero1;
+    hero1.print();
+    hero2.print();
+
+    hero1.name[0] = 'G';
+    hero1.print();
+    hero2.print();
+
+    hero2 = hero1;
+    hero1.print();
+    hero2.print();
+
+    return 0;
+}
+*/
+
 //                                      Destructor
 /*
 class Hero {
     
     // Properties
     private:
-    int health;
+        int health;
 
     public:
-    char level;
+        char level;
 
-    // Methods
-    int getHealth() {
+        // Methods
+        int getHealth() {
 
-        return health;
-    }
-    char getLevel() {
+            return health;
+        }
+        char getLevel() {
 
-        return level;
-    }
-    void setHealth(int h) {
+            return level;
+        }
+        void setHealth(int h) {
 
-        health = h;
-    }
-    void setLevel(char ch) {
+            health = h;
+        }
+        void setLevel(char ch) {
 
-        level = ch;
-    }
-    // Destructor
-    ~Hero() {   
-        cout << "Destructor called" << endl;
-    }
+            level = ch;
+        }
+        // Destructor
+        ~Hero() {   
+            cout << "Destructor called" << endl;
+        }
 };
 int main(){
 
@@ -444,12 +527,12 @@ class Hero {
     
     // Properties
     private:
-    int health;
+        int health;
 
     public:
-    char *name;
-    char level;
-    static int timeToComplete;
+        char *name;
+        char level;
+        static int timeToComplete;
 };
 int Hero::timeToComplete = 5;
 int main() {
@@ -478,33 +561,33 @@ class Hero {
     
     // Properties
     private:
-    int health;
+        int health;
 
     public:
-    char *name;
-    char level;
-    static int timeToComplete;
+        char *name;
+        char level;
+        static int timeToComplete;
 
-    // Methods
-    int getHealth() {
+        // Methods
+        int getHealth() {
 
-        return health;
-    }
-    char getLevel() {
+            return health;
+        }
+        char getLevel() {
 
-        return level;
-    }
-    void setHealth(int h) {
+            return level;
+        }
+        void setHealth(int h) {
 
-        health = h;
-    }
-    void setLevel(char ch) {
+            health = h;
+        }
+        void setLevel(char ch) {
 
-        level = ch;
-    }
-    static int random() {
-        return timeToComplete ;
-    }
+            level = ch;
+        }
+        static int random() {
+            return timeToComplete ;
+        }
 };
 // Initialising
 int Hero::timeToComplete; // (Scope Resolution operator -> ::)
